@@ -1,0 +1,182 @@
+<?php
+session_start();
+error_reporting(0);
+include_once '../includes/config.php'; 
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Topic</title>
+    <style>
+         body{
+            background-color:grey;
+            background-size:cover;
+            background-position:center center;
+            font-family: poppins;
+
+        }
+        h2{
+            text-align:center;
+            color:pink;
+            letter-spacing:1px;
+        }
+        .first{
+            width:40%;
+            min-height:80vh;
+            overflow:hidden;
+            color:white; 
+            background-color:black;
+            align-items:center; 
+            margin:0 100px 100px 350px;   
+            border-radius:30px;        
+        }
+        form{
+            margin:5% 12% 5% 8%;
+            align:center;
+            border:3px solid white;
+            border-radius:15px;
+            width:80%;
+            padding:10px 5px;
+        }
+        label{
+            text-align:left;
+            color: Aquamarine;
+            margin-left:10%;
+        }
+        input{
+            width:80%;
+            height:20px;
+            border: 2px solid #fff;
+            background: white;
+            color: black;
+            border-radius:15px 0 15px 0;
+            margin:0 10% 0 10%;
+        }
+        .btn{
+            
+            border: 0 solid Aquamarine;
+            display: block;
+            height: 25px;
+            line-height: 20px;           
+            text-align: center;
+            background: Aquamarine;
+            color: black;
+            margin: 15px 25% 0 25%;
+            cursor: pointer;
+            text-decoration:none;
+            letter-spacing:1px;
+            font-weight: bold;
+            font-size: 15px;
+            width:50%;
+        }
+    </style>
+</head>
+<body>
+    <?php
+    $id = $_GET['id'];
+    $query=mysqli_query($conn, "SELECT * FROM question WHERE id='$id'");
+    while($row=mysqli_fetch_array($query)){
+    ?>
+    <h2>Update Previous Year Question</h2>
+    <div class="first">
+            <form action="updatequestion.php" method="POST" enctype="multipart/form-data">                
+                <h4 style="text-align:center">QUESTIONS</h4>
+                <label>Id : </label><br>
+                <input type="text" name="id" value="<?php echo $id ?>" readonly><br><br>
+                <label>Course Code : </label><br>
+                <input type="text" name="cc" value="<?php echo $row['coursecode']; ?>"><br><br>
+                <label>Course : </label><br>
+                <input type="text" name="c" value="<?php echo $row['course']; ?>"><br><br>
+                <label>Session : </label><br>
+                <input type="text" name="ses" value="<?php echo $row['sesion']; ?>"><br><br>
+                <label>Question : </label><br>
+                <input type="file" name="quesnew" >
+                <input type="hidden" name="quesold" value="<?php echo $row['questions']; ?>"><br><br>
+                <input type="submit" name="update" value="Update" class="btn">
+            </form>
+    </div>
+    <?php 
+    }
+    ?>
+</body>
+</html>
+<?php
+    if(isset($_POST["update"]))
+    {
+        $coursecode=$_POST["cc"];
+        $course=$_POST["c"];
+        $sesion=$_POST["ses"];                
+        $id=$_POST["id"];
+        $newpdf=$_FILES["quesnew"]["name"];
+        $oldpdf=$_POST["quesold"];
+
+        if($newpdf != '')
+        {
+            $up_pdf = $_FILES["quesnew"]["name"];
+        }
+        else{
+            $up_pdf = $oldpdf;
+        }
+
+        $upload_dir=__DIR__ . "/../uploads/Question";
+
+        if($_FILES["quesnew"]["name"] != '')
+        {
+            if(file_exists($upload_dir.'/'.$_FILES["quesnew"]["name"]))
+            {
+                $sql1 ="UPDATE question SET coursecode='$coursecode',course='$course',sesion='$sesion',questions='$up_pdf' WHERE id='$id'";
+                $data=mysqli_query($conn,$sql1);
+                if($data)
+                {
+                    echo"<script>alert('File already exists');</script>";
+                    ?>
+                    <META HTTP-EQUIV="Refresh" CONTENT ="0; URL= http://localhost/noteapp/pages/question.php?code=<?php echo $coursecode ?>">
+                    <?php
+                }
+                else
+                {
+                    echo"<script>alert('Something went wrong please try again later');</script>";
+                }
+            }
+
+            else
+            {
+                move_uploaded_file($_FILES["quesnew"]["tmp_name"],$upload_dir.'/'.$_FILES["quesnew"]["name"]);
+                unlink($upload_dir.'/'.$oldpdf);
+                $sql ="UPDATE question SET coursecode='$coursecode',course='$course',sesion='$sesion',questions='$up_pdf' WHERE id='$id'";
+                $data=mysqli_query($conn,$sql);
+                if($data)
+                {
+                    echo"<script>alert('You have successfully updated the data');</script>";
+                    ?>
+                    <META HTTP-EQUIV="Refresh" CONTENT ="0; URL= http://localhost/noteapp/pages/question.php?code=<?php echo $coursecode ?>">
+                    <?php  
+                } 
+                else
+                {
+                    echo"<script>alert('Something went wrong please try again later');</script>";
+                }    
+            }
+        }
+        else
+        {
+            $sql ="UPDATE question SET coursecode='$coursecode',course='$course',sesion='$sesion',questions='$up_pdf' WHERE id='$id'";
+            $data=mysqli_query($conn,$sql);
+
+            if($data)
+            {
+                echo"<script>alert('You have successfully updated the data');</script>";
+                ?>
+                <META HTTP-EQUIV="Refresh" CONTENT ="0; URL= http://localhost/noteapp/pages/question.php?code=<?php echo $coursecode ?>">
+                <?php
+            }
+            else{
+                echo"<script>alert('Something went wrong please try again later');</script>";
+            }
+        }
+    }
+?>
