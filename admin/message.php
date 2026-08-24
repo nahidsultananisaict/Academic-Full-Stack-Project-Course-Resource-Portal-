@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Message</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/noteapp/assests/css/style.css">
 </head>
 <style>
     body{
@@ -99,7 +99,7 @@
         padding:10px;
     }
     .msg{
-        height:65vh;
+        height:73vh;
         overflow-y:scroll;
     }
     /* ====================== */
@@ -171,7 +171,6 @@
     .bottom{
         height:35px;
         width:47%; 
-        padding-top:5px;
         position:absolute; 
         bottom:25px;
     }
@@ -197,6 +196,9 @@
 
     <nav aria-label="Main Menu">
     <ul role="menubar">
+        <?php 
+            $admin=$_SESSION["admin"]; 
+        ?>
         <li ><a href="home.php?username=<?php echo $admin; ?>"><span  style="font-family:poppins; font-size:18.5px; color:aliceblue; margin-right:10px">Home</span></a></li>
     </ul>
     </nav>
@@ -281,7 +283,7 @@
                     }
                     ?>
                     <div class="chatimage">
-                        <?php echo "<img src='../assets/images/$i'>"; ?>
+                        <?php echo "<img src='../uploads/Images/$i'>"; ?>
                     </div>
                     <div class="chat">
                         <p style="padding:3px"><?php echo $msg; ?></p>
@@ -289,7 +291,7 @@
                 </div>
                 <?php 
                 }
-                if(($row1['sender'] == "student") && ($row1['username'] == $user) && ($row1['receiver'] == $admin)){
+                if(($row1['sender'] == "student") && ($row1['username'] == $user) && ($row1['receiver'] == "admin")){
                     $msg=$row1['message'];
                 ?>
                 <div class="text1">

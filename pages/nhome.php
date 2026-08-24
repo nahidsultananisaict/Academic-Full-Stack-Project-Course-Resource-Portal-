@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
 
-    <link rel="stylesheet" href="/noteapp/assets/css/style.css">
+    <link rel="stylesheet" href="/noteapp/assests/css/style.css">
     <style>
         .php-con{
             margin-top: 30px auto;
@@ -132,13 +132,13 @@
     $username=$_SESSION["username"];
 
     // Check if the user is admin
-    // $checkAdmin = $conn->query("SELECT * FROM admin WHERE username='$username'");
-    // $isAdmin = ($checkAdmin && $checkAdmin->num_rows > 0);
+    $checkAdmin = $conn->query("SELECT * FROM admin WHERE username='$username'");
+    $isAdmin = ($checkAdmin && $checkAdmin->num_rows > 0);
 
     $query = $conn->query("SELECT * FROM request WHERE username='$username'");
     while($row1=mysqli_fetch_array($query)){
         $approval=$row1['status'];
-        if($approval == 1){
+        if($isAdmin || $approval == 1){
 
            
     ?>
@@ -224,7 +224,7 @@
     ?>     
     <div class="card">
         <div class="img-style">
-        <img src="/noteapp/assets/images/images.jpg" alt="">
+        <img src="/noteapp/assests/images/images.jpg" alt="">
         </div>
         <div class="card-body">
             <div class="card-title">

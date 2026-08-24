@@ -11,11 +11,12 @@ session_start();
     <title>Item
     </title>
 
-    <link rel="stylesheet" href="/noteapp/assets/css/style.css">
+    <link rel="stylesheet" href="/noteapp/assests/css/style.css">
     <style>
         .heading h1 {
-            margin-top:80px;
+            margin-top:70px;
             padding:20px;
+            padding-left: 30%;
             font-size:20px;
             font-weight:bolder;
             color:white;
@@ -23,6 +24,7 @@ session_start();
         }
         .heading h2 {
             font-size:20px;
+            padding-left:30%;
             font-weight:bolder;
             color:white;
             text-align:center;
@@ -32,9 +34,9 @@ session_start();
         width: 900px;  /*div size in width */
         margin:auto;
         display:block;
-        margin-top:5%;
+        margin-top:4%;
         font-family: sans-serif;
-        margin-left:17%;
+        margin-left:24%;
         }
         
         .cards{
@@ -172,7 +174,7 @@ session_start();
 <div class="topic-container">
     <div class="cards">
         <div class="img-styling">
-        <img src="/noteapp/assets/images/topic2.jpg" alt="">
+        <img src="/noteapp/assests/images/topic2.jpg" alt="">
         </div>
         <div class="card-bodies" style="height:100px">
             <div class="card-title">
@@ -186,7 +188,7 @@ session_start();
 
     <div class="cards">
         <div class="img-styling">
-        <img src="/noteapp/assets/images/question1.jpg" alt="">
+        <img src="/noteapp/assests/images/question1.jpg" alt="">
         </div>
         <div class="card-bodies" style="height:100px">
             <div class="card-title">
@@ -200,7 +202,7 @@ session_start();
 
     <div class="cards">
         <div class="img-styles">
-        <img src="/noteapp/assets/images/important1.jpg" alt="">
+        <img src="/noteapp/assests/images/important1.jpg" alt="">
         </div>
         <div class="card-bodies" style="height:90px">
             <div class="card-title">
@@ -216,7 +218,7 @@ session_start();
 <div class="topic-container">
     <div class="cards">
         <div class="img-styling">
-        <img src="/noteapp/assets/images/resources.jpg" alt="">
+        <img src="/noteapp/assests/images/resources.jpg" alt="">
         </div>
         <div class="card-bodies" style="height:100px">
             <div class="card-title">
@@ -230,7 +232,7 @@ session_start();
 
     <div class="cards">
         <div class="img-styling">
-        <img src="/noteapp/assets/images/note1.jpg" alt="">
+        <img src="/noteapp/assests/images/note1.jpg" alt="">
         </div>
         <div class="card-bodies" style="height:100px">
             <div class="card-title">
@@ -243,7 +245,7 @@ session_start();
     </div>
     <div class="cards">
         <div class="img-styles">
-        <img src="/noteapp/assets/images/viva1.png" alt="">
+        <img src="/noteapp/assests/images/viva1.png" alt="">
         </div>
         <div class="card-bodies" style="height:90px">
             <div class="card-title">

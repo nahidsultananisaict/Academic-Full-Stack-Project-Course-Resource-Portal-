@@ -161,7 +161,7 @@ include_once '../includes/config.php';
 
         $oldimage=$_POST["oldimage"];
         $newimage=$_FILES["newimage"]["name"];
-        $upload_dir=__DIR__ . "/../assets/images";
+        $upload_dir=__DIR__ . "/../uploads/Images";
         
 
         if($newimage != '')

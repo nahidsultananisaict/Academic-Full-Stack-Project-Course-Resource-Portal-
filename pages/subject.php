@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
 
-    <link rel="stylesheet" href="/noteapp/assets/css/style.css">
+    <link rel="stylesheet" href="/noteapp/assests/css/style.css">
     <style>
         .card-contain{
             width: 900px;
@@ -97,7 +97,7 @@
             font-weight:bolder;
             color:white;
             text-align:center;
-            margin-left:100px;
+            margin-left:250px;
         }
 
         
@@ -119,17 +119,21 @@
 
 <!-- invisible -->
     <?php 
-        $username=$_SESSION["username"];
-        $query = $conn->query("SELECT * FROM request WHERE username='$username'");
-        while($row1=mysqli_fetch_array($query)){
-            $approval=$row1['status'];
-            if($approval == 1){
+    $username=$_SESSION["username"];
 
-            
+    // Check if the user is admin
+    // $checkAdmin = $conn->query("SELECT * FROM admin WHERE username='$username'");
+    // $isAdmin = ($checkAdmin && $checkAdmin->num_rows > 0);
+
+    $query = $conn->query("SELECT * FROM request WHERE username='$username'");
+    while($row1=mysqli_fetch_array($query)){
+        $approval=$row1['status'];
+        if($approval == 1){
+
         ?>
-<!-- invisible -->
 
-        <ul>
+            <!-- YOUR ADD COURSE FORM HERE -->
+            <ul>
             <li>
                 <form action="subject.php" method="post" enctype="multipart/form-data">
                 <h4 style="text-align:center; font-weight:bold; font-size:16px; margin-top:5px; color:aliceblue">ADD COURSE</h4><br>
@@ -173,6 +177,8 @@
         }
     }
         ?>
+
+        
     </li>
     <li role="none"><span>
         <a href="nhome.php" class="nav-link" role="menuitem">Home</a>

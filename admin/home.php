@@ -10,16 +10,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin</title>
-    <link rel="stylesheet" href="/noteapp/assets/css/style.css">
+    <link rel="stylesheet" href="/noteapp/assests/css/style.css">
     <style>
         .container{
-            width:99.8%;
+            width:116%;
             height:100vh;
             padding-left:60px;
         }
         .container .container-top{
             width:100%;
-            height:15%;
+            height:12%;
             background-color:black;
             color:white;
             
@@ -27,15 +27,16 @@
         .container .cotainer-body{
             
             width:100%;
-            height:85%;
+            height:88%;
             background-color:darkslategray;
-            padding:40px;
+            padding:60px 40px 40px 40px;
         }
         .container .cotainer-body .div1{
             width:24.5%;
             height:100%;
             float:left;
             border:1px solid black;
+            padding:50px 0 50px 0;
         }
         .container .cotainer-body .div2{
             width:73.5%;
@@ -43,7 +44,7 @@
             float:right;
             margin-right:10px;
             border:1px solid black;
-            padding:5px 50px 50px 50px;
+            padding:50px 50px 50px 50px;
         }
         .container .cotainer-body .div2 .info{
             float:left;
@@ -58,7 +59,7 @@
         .container .cotainer-body .div2 .image img{
             padding:30% 10% 8% 10%;
             width:100%;
-            height:100%;
+            height:70%;
         }
         .container .cotainer-body .div1 .div1a{
             width:100%;
@@ -218,7 +219,7 @@
                         <li >
                         <form action="logout.php" method="POST">
                         <h2 onclick = "return logout()" >
-                        <input type="submit" name="logout" value="<?php echo $_SESSION["admin"]." Logout"; ?>" class="logout" >
+                        <input type="submit" name="logout" value="<?php echo $username." Logout"; ?>" class="logout" >
                         </h2>
                         </form>
                         </li>
@@ -232,13 +233,13 @@
             <div class="div1">
                 <!-- upper portion of leftpart -->
                 <div class="div1a">
-                    <h2 style="padding-bottom: 10px; font-size:20px; font-weight:bolder; color:Aquamarine"><em><span style="color:Aquamarine"><?php echo 'Hello! '.$_SESSION["admin"]; ?></em></h2>
-                    <img src="/noteapp/assets/images/people.png" alt="">
+                    <h2 style="padding-bottom: 20px; font-size:20px; font-weight:bolder; color:Aquamarine"><em><span style="color:Aquamarine"><?php echo 'Hello! '.$_SESSION["admin"]; ?></em></h2>
+                    <img src="/noteapp/assests/images/people.png" alt="">
                 </div>
                 <!-- lower portion of leftpart -->
                 <div class="div1b">
                     <em>
-                    <a href="nhome.php"><h2><span>User Panel</span></h2></a>
+                    <a href="nhome.php?username=<?php echo $username; ?>"><h2><span>User Panel</span></h2></a>
                     <a href="requested.php"><h2><span>Request</span></h2></a>
                     <a href="approve.php"><h2><span>Approved Request</span></h2></a>
                     <a href="delete.php"><h2><span>Deleted Request</span></h2></a>
@@ -261,7 +262,7 @@
                     <p><span class="span">BATCH : </span> <em><?php echo $array['batch']; ?></p></em>
                 </div>
                 <div class="image">
-                    <?php echo "<img src='/noteapp/assets/images/$image'>" ?>
+                    <?php echo "<img src='/noteapp/uploads/Images/$image'>" ?>
                 </div>
             </div>
         </div>

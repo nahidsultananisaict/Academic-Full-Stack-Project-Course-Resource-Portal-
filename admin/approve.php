@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
 
-    <link rel="stylesheet" href="/noteapp/assets/css/style.css">
+    <link rel="stylesheet" href="/noteapp/assests/css/style.css">
     <style>
         body{
             width:108%;
@@ -22,7 +22,7 @@
         }
         .divtable{
             width:100%;
-            min-height:82.5vh;
+            min-height:86vh;
             overflow:hidden;
             margin-top:50px;
             padding:0 20px 20px 20px;
@@ -120,7 +120,7 @@
                     if($data){
                         echo"<script>alert('Permission is terminated');</script>";
                         ?>
-                        <META HTTP-EQUIV="Refresh" CONTENT ="0; URL= http://localhost/Note/requested.php">
+                        <META HTTP-EQUIV="Refresh" CONTENT ="0; URL= http://localhost/noteapp/requested.php">
                         <?php
                     }
                     else{
@@ -157,7 +157,7 @@
                     if($data2){
                         echo"<script>alert('Permission is denied');</script>";
                         ?>
-                        <META HTTP-EQUIV="Refresh" CONTENT ="0; URL= http://localhost/Note/delete.php">
+                        <META HTTP-EQUIV="Refresh" CONTENT ="0; URL= http://localhost/noteapp/delete.php">
                         <?php
                     }
                     else{

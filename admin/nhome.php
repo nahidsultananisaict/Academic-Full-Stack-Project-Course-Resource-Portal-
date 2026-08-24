@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
 
-    <link rel="stylesheet" href="/noteapp/assets/css/style.css">
+    <link rel="stylesheet" href="/noteapp/assests/css/style.css">
     <style>
         .php-con{
             margin-top: 30px auto;
@@ -130,16 +130,13 @@
 
     <!-- invisible -->
     <?php 
-    $username=$_SESSION["username"];
+    $username=$_SESSION["admin"];
 
     // Check if the user is admin
     $checkAdmin = $conn->query("SELECT * FROM admin WHERE username='$username'");
     $isAdmin = ($checkAdmin && $checkAdmin->num_rows > 0);
 
-    $query = $conn->query("SELECT * FROM request WHERE username='$username'");
-    while($row1=mysqli_fetch_array($query)){
-        $approval=$row1['status'];
-        if($isAdmin || $approval == 1){
+    if($isAdmin){
 
            
     ?>
@@ -160,7 +157,7 @@
                                 if(mysqli_query($conn,$sql)){
                                     echo"<script>alert('You have successfully inserted the data');</script>";
                                     ?>
-                                    <META HTTP-EQUIV="Refresh" CONTENT ="0; URL= http://localhost/noteapp/admin/nhome.php?username=<?php echo $_SESSION["username"]; ?>">
+                                    <META HTTP-EQUIV="Refresh" CONTENT ="0; URL= http://localhost/noteapp/admin/nhome.php?username=<?php echo $username; ?>">
                                     <?php
                                 }
                                 else{
@@ -172,16 +169,16 @@
                     </ul>
         <?php
         }
-    }
+    // }
         ?>
     </li>
     <li role="none"><span>
         
-        <a href="requested.php?username=<?php echo $_SESSION["username"]; ?>" class="nav-link" role="menuitem">Request</a>
+        <a href="requested.php?username=<?php echo $username; ?>" class="nav-link" role="menuitem">Request</a>
     </span></li>
 
     <li role="none"><span>
-        <a href="home.php?username=<?php echo $_SESSION["username"]; ?>" class="nav-link" role="menuitem">Profile</a>
+        <a href="home.php?username=<?php echo $username; ?>" class="nav-link" role="menuitem">Profile</a>
     </span></li>
 
     <li role="none"><span>
@@ -196,7 +193,7 @@
     <li style="margin-right:25px;">
         <form action="logout.php" method="POST">
         <h2 onclick = "return logout()" >
-        <input type="submit" class="logout" name="logout" value="<?php echo $_SESSION["username"]." Logout"; ?>" >
+        <input type="submit" class="logout" name="logout" value="<?php echo $username." Logout"; ?>" >
         </h2>
         </form>
     </li>
@@ -224,7 +221,7 @@
     ?>     
     <div class="card">
         <div class="img-style">
-        <img src="/noteapp/assets/images/images.jpg" alt="">
+        <img src="/noteapp/assests/images/images.jpg" alt="">
         </div>
         <div class="card-body">
             <div class="card-title">
@@ -234,7 +231,7 @@
             All resources releated to <?php echo $row['semester'] ?> semester subjects...
             </div>
             <div class="bottom-container">
-                <a href="../pages/subject.php?sem=<?php echo $row['semester'] ?>" class="bottom">Click Here</a>
+                <a href="../admin/subject.php?sem=<?php echo $row['semester'] ?>" class="bottom">Click Here</a>
             </div>
         </div>
     </div>

@@ -19,7 +19,7 @@
 
         .first{
             width:97%;
-            height:550px;
+            min-height:95vh;
             margin-top:20px;
             margin-left:15px;
             background: rgba(0,0,0,0.6);

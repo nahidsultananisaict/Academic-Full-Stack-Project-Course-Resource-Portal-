@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>profile</title>
 
-    <link rel="stylesheet" href="/noteapp/assets/css/style.css">
+    <link rel="stylesheet" href="/noteapp/assests/css/style.css">
     <style>
         .php-con{
             margin: 20px auto;
@@ -33,7 +33,7 @@
         .main{
             width:80%;
             height:485px;
-            margin-top:100px;
+            margin-top:180px;
             margin-left:130px;
             background: rgba(0,0,0,0.6);
             text-align:center;
@@ -169,7 +169,7 @@
         <div class="second">
             <div class="image">
                 <em>
-                <img src="/noteapp/assets/images/people.png" alt=""><br><br><br>
+                <img src="/noteapp/assests/images/people.png" alt=""><br><br><br>
                 <a href="nhome.php?username=<?php echo $username ?>">Home</a><br><br><br>
                 <a href="updatestudentprofile.php?id=<?php echo $id ?>">Update</a><br><br><br>
                 <a href="messages.php">Message</a><br><br><br>

@@ -38,7 +38,7 @@ $localhost="localhost";
             color:white; 
             background-color:black;
             align-items:center; 
-            margin:0 100px 100px 350px;   
+            margin:0 100px 100px 450px;   
             border-radius:30px;        
         }
         form{

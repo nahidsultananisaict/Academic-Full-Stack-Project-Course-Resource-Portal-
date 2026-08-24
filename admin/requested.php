@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
 
-    <link rel="stylesheet" href="/noteapp/assets/css/style.css">
+    <link rel="stylesheet" href="/noteapp/assests/css/style.css">
     <style>
         body{
             width:108%;
@@ -22,7 +22,7 @@
         }
         .divtable{
             width:100%;
-            min-height:82.5vh;
+            min-height:86vh;
             overflow:hidden;
             margin-top:50px;
             padding:0 20px 20px 20px;

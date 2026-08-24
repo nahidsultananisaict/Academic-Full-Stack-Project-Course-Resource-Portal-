@@ -156,7 +156,7 @@
                 <?php 
 
                     $username=$_SESSION["username"];
-                    $usertype=$_SESSION["role"];
+                    //$usertype=$_SESSION["role"];
 
                     $query1 = $conn->query("SELECT * FROM request WHERE username='$username'");
                     $approval = 0;
@@ -174,7 +174,7 @@
                     <td><?php echo $row['created'];?></td>
                     <td><a download="<?php echo $row['note'];?>" href="../uploads/Note/<?php echo $row['note']; ?>">download</a></td>
                     <td>
-                        <?php if($usertype == "admin" || $approval == 1){ 
+                        <?php if($approval == 1){ 
                         $id=$row['id'];
                         ?>
                         <a href="updatenote.php?id=<?php echo $id ?>"><?php } ?>

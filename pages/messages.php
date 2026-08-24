@@ -12,7 +12,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Message</title>
-    <link rel="stylesheet" href="/noteapp/assets/css/style.css">
+    <link rel="stylesheet" href="/noteapp/assests/css/style.css">
     <style>
         body{
             width:108%;
@@ -29,7 +29,7 @@
             color:white;
             margin-top:100px;
             margin-left:350px;
-            padding:10px;
+            /* padding:10px; */
         }
         .head{
             height:50px; 
@@ -40,8 +40,9 @@
             padding:13px;
         }
         .msg{
-            height:66vh;
+            height:72vh;
             overflow-y:scroll;
+            padding-left:5px;
         }
         .text1{
             width:100%;
@@ -88,7 +89,7 @@
         letter-spacing:0.8px;
         border-radius:5px;
         word-wrap:break-word;
-        padding:6px 10px;
+        padding:6px 10px ;
         margin-top:15px;
         }
         .chat2{
@@ -107,14 +108,14 @@
         }
         .bottom{
             height:35px;
-            width:44%; 
-            padding-top:5px;
+            width:45%; 
+            /* padding-top:5px; */
             position:absolute; 
-            bottom:22px;
+            bottom:22px;;
         }
         .form-control{
             height:30px;
-            width:82%;
+            width:83%;
         }
         .btn{
             color:black;
@@ -133,14 +134,14 @@
 
 
     <?php
-        $admin=$_SESSION["admin"];
         $username=$_SESSION["username"];
+        $admin="admin";
 
         if(isset($_POST['submit'])){
             $msg=$_POST['msg'];
             $status="no";
             $sender="student";
-            $receiver=$admin;
+            $receiver="admin";
             $sql ="INSERT into message(username,message,status,sender,receiver) VALUES('$username','$msg','$status','$sender','$receiver')";
             $data=mysqli_query($conn,$sql);
             if($data){
@@ -201,21 +202,21 @@
             </div>
             <?php } 
         
-            if(($row1['sender'] == "admin") && ($row1['username'] == $admin) && ($row1['receiver'] == $username)){
+            if(($row1['sender'] == "admin") &&  ($row1['receiver'] == $username)){
                 $msg=$row1['message'];
                 ?>
                 <div class="text1">
                     <!-- image -->
                     <div class="image2">                   
                         <?php
-                        $query1 = $conn->query("SELECT * FROM admin WHERE username='$admin'");
+                        $query1 = $conn->query("SELECT * FROM admin WHERE id='1'");
                         while($result1=mysqli_fetch_array($query1)){
                             $image=$result1['image'];
                             
                         }
                         ?>
                         <!-- image -->
-                        <?php echo "<img src='../assets/images/$image'>"; ?>
+                        <?php echo "<img src='../uploads/Images/$image'>"; ?>
                     </div>
 
                     <div class="chat2">
@@ -236,7 +237,7 @@
         </div>
     </div>
     <?php
-    $q = $conn->query("UPDATE message set status='yes' WHERE sender='admin' and username='$admin'");
+    $q = $conn->query("UPDATE message set status='yes' WHERE sender='admin' and receiver='$username'");
     $re=mysqli_fetch_array($q);
     ?>
 
